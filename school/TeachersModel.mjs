@@ -1,7 +1,7 @@
 export class TeachersModel{
 
     constructor(){
-        this.teachers = {}
+        this.teachers = new Map();
     }
 
     async add(_name, _image, _dateOfBirth, _emails, _phones, _sex, _subjects, _description = "no description"){
@@ -17,7 +17,7 @@ export class TeachersModel{
     
     async read(targetId){
         // simply returning whole object
-        return this.teachers[targetId]
+        return this.teachers.get(targetId)
     }
 
 
@@ -33,7 +33,7 @@ export class TeachersModel{
             throw new Error('invalid parameter')
         }
         // appending a new teacher data to teachers object {id: Data}
-        this.teachers [targetId] = [_name, _image, _dateOfBirth, _emails, _phones, _sex, _subjects, _description]
+        this.teachers.set(targetId,{"name":_name, "image":_image, "dateOfBirth":_dateOfBirth, "emails":_emails, "phones":_phones, "sex":_sex, "subjects":_subjects, "description":_description})
     }
 
     async remove(targetId){

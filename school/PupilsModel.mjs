@@ -1,7 +1,7 @@
 export class PupilsModel{
 
     constructor(){
-        this.pupils = {}
+        this.pupils = new Map()
     }
     
     async add(_name, _image, _dateOfBirth, _phones, _sex, _description){
@@ -17,7 +17,7 @@ export class PupilsModel{
 
     async read(targetId){
         // simply returning whole object
-        return this.pupils[targetId]
+        return this.pupils.get(targetId)
     }
 
 
@@ -31,7 +31,9 @@ export class PupilsModel{
                 throw new Error('invalid parameter')
             }
         // appending a new pupil data to pupils object {id: Data}
-        this.pupils [targetId] = [_name, _image, _dateOfBirth, _phones, _sex, _description];
+        // this.pupils.set(targetId[["name",_name], ["image",_image], ["dateOfBirth",_dateOfBirth], ["phones",_phones], ["sex",_sex], ["description",_description]])
+
+        this.pupils.set(targetId,{"name":_name, "image":_image, "dateOfBirth":_dateOfBirth, "phones":_phones, "sex":_sex, "description":_description})
     }
 
 
