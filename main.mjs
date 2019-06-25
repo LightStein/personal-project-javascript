@@ -65,7 +65,7 @@ const log = console.log;
       await gradebooks.addRecord(gradebookId, record);
       
       const oliver = await gradebooks.read(gradebookId, pupilId);
-      await log(oliver)
+      // await log(oliver)
       log(await gradebooks.readAll(gradebookId));
 })()
 

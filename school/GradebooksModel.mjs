@@ -27,7 +27,6 @@ export class GradebooksModel{
    
                     const pp = this.pupils.pupils.get(pupilId)
                     const tc = this.teachers.teachers.get(this.gradebooks.get(gradebookId).records.get(pupilId).teacherId)
-                    console.log(tc.name)
                     const subj = this.lms.subjects.get(this.gradebooks.get(gradebookId).records.get(pupilId).subjectId)
                     const res_obj = {
                         name:`${pp.name.first} ${pp.name.last}`,
@@ -44,7 +43,10 @@ export class GradebooksModel{
     }
 
     async readAll(gradebookId){
-        
-        return this.gradebooks.get(gradebookId)
+        let res = []
+        for (let x of this.gradebooks){
+            res.push(x)
+        }
+        return res
     }
 }
