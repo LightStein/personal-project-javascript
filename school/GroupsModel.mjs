@@ -2,33 +2,34 @@
 
 export class GroupsModel{
     constructor(){
-        this.groups = {}
+        this.groups = new Map()
 
     }
 
     async add(room){
         const time = new Date();
         let id = "G"+((time.getMinutes() * time.getMilliseconds()).toString());
-        this.groups[id] = {"id":id, "room": room,"pupils": []}
+        this.groups.set(id,{"id":id, "room": room,"pupils": []})
         return id
     }
 
     async addPupil(groupId, pupilId){
-        this.groups[groupId]["pupils"].push(pupilId);
+        this.groups.get(groupId)["pupils"].push(pupilId);
     }
 
     async removePupil(groupId, pupilId){
-        i = (this.groups[groupId]["pupils"].indexOf(pupilId));
-        delete this.groups[groupId]["pupils"][i];
-        this.groups[groupId]["pupils"].splice(i,1);
+        i = (this.groups.get(groupId)["pupils"].indexOf(pupilId));
+        delete this.groups.get(groupId)["pupils"][i];
+        // this.groups[groupId]["pupils"].splice(i,1);
+        this.groups.get(groupId)["pupils"].splice(i,1);
     }
 
     async update(groupId, room){
-        this.groups[groupId]["room"] = room["room"]
+        this.groups.get(groupId)["room"] = room["room"]
     }
 
     async read(groupId){
-        return this.groups[groupId]
+        return this.groups.get(groupId)
     }
     
     async readAll(){

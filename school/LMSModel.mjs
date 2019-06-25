@@ -1,20 +1,20 @@
 export class LMSModel{
     constructor(){
-        this.subjects = {}
+        this.subjects = new Map()
     }
     
     async remove(subject){
         if (this.verify(subject)){
-            delete this.subjects[subject.id]
+            delete this.subjects.delete(subject.id)
         }
     }
 
     async add(subject){
-        this.subjects [subject.id] = subject
+        this.subjects.set(subject.id, subject)
     }
 
     async verify(subject){
-        return subject.id in this.subjects
+        return this.subjects.has(subject.id)
     }
 
     async readAll(){

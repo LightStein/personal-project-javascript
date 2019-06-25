@@ -6,16 +6,16 @@ const log = console.log;
     // teacher
     log("<=========== Teacher ===========>");
     const teachers = new TeachersModel();
-    const teacherId = await teachers.add({"first":"Eurus", "last":"Holmes"},"Eurus.jpg", "06/06/1985", [{"email":"eurus221b@protonmail.com", "primary":false},{"email":"eurus.holmes@britishmail.uk","primary":true}], [{"phone":"18763211","primary":true}], "female", [{"subject":"Philosophy"},{"subject":"Math"}]);
+    const teacherId = await teachers.add({"name":{"first":"Eurus", "last":"Holmes"},"image":"Eurus.jpg", "dateOfBirth":"06/06/1985", "emails":[{"email":"eurus221b@protonmail.com", "primary":false},{"email":"eurus.holmes@britishmail.uk","primary":true}], "phones":[{"phone":"18763211","primary":true}],"sex":"female", "subjects":[{"subject":"Philosophy"},{"subject":"Math"}]});
     log( await teachers.read(teacherId));
-    await teachers.remove(teacherId)
+    // await teachers.remove(teacherId)
 
 
     // pupil
     log("<=========== Pupil ===========>");
     const pupils = new PupilsModel();
-    const pupilId = await pupils.add({"first":"Henry", "last":"Wellington"}, "H.jpg", "20/01/2003", [{"phone":"12345697", "primary":true}], "male");
-    await pupils.update(pupilId, {"first":"George", "last":"Wellington"}, "H.jpg", "20/01/2003", [{"phone":"12345697", "primary":true}], "male");
+    const pupilId = await pupils.add({"name":{"first":"Henry", "last":"Wellington"}, "image":"H.jpg", "dateOfBirth":"20/01/2003", "phones":[{"phone":"12345697", "primary":true}], "sex":"male"});
+    await pupils.update(pupilId, {"name":{"first":"George", "last":"Wellington"}, "image":"H.jpg", "dateOfBirth":"20/01/2003", "phones":[{"phone":"12345697", "primary":true}], "sex":"male"});
     log( await pupils.read(pupilId))
     // await pupils.remove(pupilId)
 

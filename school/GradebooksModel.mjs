@@ -27,7 +27,8 @@ export class GradebooksModel{
    
                     const pp = this.pupils.pupils.get(pupilId)
                     const tc = this.teachers.teachers.get(this.gradebooks.get(gradebookId).records.get(pupilId).teacherId)
-                    const subj = this.lms.subjects[this.gradebooks.get(gradebookId).records.get(pupilId).subjectId]
+                    console.log(tc.name)
+                    const subj = this.lms.subjects.get(this.gradebooks.get(gradebookId).records.get(pupilId).subjectId)
                     const res_obj = {
                         name:`${pp.name.first} ${pp.name.last}`,
                         "records":[
@@ -37,12 +38,13 @@ export class GradebooksModel{
                             'mark': this.gradebooks.get(gradebookId).records.get(pupilId).mark}
                         ]
                         }
-                return res_obj           
+                return res_obj
     
         return "No Data found"
     }
 
     async readAll(gradebookId){
+        
         return this.gradebooks.get(gradebookId)
     }
 }
