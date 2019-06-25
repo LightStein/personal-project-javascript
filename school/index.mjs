@@ -9,3 +9,5 @@ export { LMSModel } from './LMSModel.mjs';
 export { GroupsModel } from './GroupsModel.mjs';
 
 export { GradebooksModel } from './GradebooksModel.mjs';
+
+export { IDGenerator } from './IDGenerator.mjs'

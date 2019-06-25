@@ -1,3 +1,6 @@
+import { IDGenerator } from './IDGenerator.mjs'
+const IDGen = new IDGenerator("Teacher")
+
 export class TeachersModel{
 
     constructor(){
@@ -7,7 +10,7 @@ export class TeachersModel{
     async add(teacher){
         // creating random ID starting with T (teacher)
         const time = new Date();
-        let id = "T"+((time.getMinutes() * time.getMilliseconds()).toString());
+        let id = IDGen.getID()
     
         // using update method for both updating and creating purposes
         this.update(id, teacher)

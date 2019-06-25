@@ -1,4 +1,5 @@
-
+import { IDGenerator } from './IDGenerator.mjs'
+const IDGen = new IDGenerator("Group")
 
 export class GroupsModel{
     constructor(){
@@ -7,8 +8,8 @@ export class GroupsModel{
     }
 
     async add(room){
-        const time = new Date();
-        let id = "G"+((time.getMinutes() * time.getMilliseconds()).toString());
+
+        const id = IDGen.getID()
         this.groups.set(id,{"id":id, "room": room,"pupils": []})
         return id
     }

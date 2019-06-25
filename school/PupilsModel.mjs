@@ -1,3 +1,6 @@
+import { IDGenerator } from './IDGenerator.mjs'
+const IDGen = new IDGenerator("Pupil")
+
 export class PupilsModel{
 
     constructor(){
@@ -6,8 +9,7 @@ export class PupilsModel{
     
     async add(pupil){
         // creating random ID starting with P (pupil)
-        const time = new Date();
-        let id = "P"+((time.getMinutes() * time.getMilliseconds()).toString());
+        let id = IDGen.getID();
         
         if (!pupil["description"]){
             pupil["description"] = "no description"
